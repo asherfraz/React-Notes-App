@@ -18,6 +18,7 @@ const userSlice = createSlice({
             state.user = null;
             localStorage.removeItem("user");
             localStorage.removeItem("notes");
+            console.log(">>>: Redux: User logged out & local storage cleared!");
         },
         updateUser(state, action) {
             if (state.user) {

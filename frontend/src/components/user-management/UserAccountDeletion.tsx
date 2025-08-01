@@ -37,10 +37,11 @@ export const UserAccountDeletion = () => {
 	const handleAccountDeletion = async () => {
 		try {
 			const response = await deleteUserAccount(user._id);
-			if (response.status === 200) {
+			console.log(">>>: DeleteUser API Response:", response);
+			if (response.status === 200 || response.auth === false) {
 				dispatch(logoutUser());
 				toast.success("User account deleted successfully.");
-				navigate("/");
+				// navigate("/");
 			} else {
 				toast.error(response.response.data.message);
 			}
@@ -89,7 +90,7 @@ export const UserAccountDeletion = () => {
 					<DialogHeader>
 						<DialogTitle>Delete User Account</DialogTitle>
 					</DialogHeader>
-					<form className="space-y-4" onSubmit={handleAccountDeletion}>
+					<form className="space-y-4">
 						<div>
 							<Label htmlFor="country" className="mb-2">
 								Type your email:{" "}
@@ -114,7 +115,11 @@ export const UserAccountDeletion = () => {
 							>
 								Cancel
 							</Button>
-							<Button type="submit" className="bg-red-400 hover:bg-red-500">
+							<Button
+								type="submit"
+								onClick={handleAccountDeletion}
+								className="bg-red-400 hover:bg-red-500"
+							>
 								Delete!
 							</Button>
 						</DialogFooter>

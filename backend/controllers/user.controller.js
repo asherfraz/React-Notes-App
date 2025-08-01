@@ -600,7 +600,7 @@ const UserController = {
                 maxAge: new Date(0)
             });
             // Return success response
-            res.status(200).json({ message: 'User deleted successfully' });
+            res.status(200).json({ message: 'User deleted successfully', auth: false });
         } catch (error) {
             console.error('Error deleting user:', error);
             res.status(500).json({ message: 'Internal server error' });
