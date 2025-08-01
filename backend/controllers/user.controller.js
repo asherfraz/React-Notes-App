@@ -587,8 +587,14 @@ const UserController = {
             // delete its refresh token
             await RefreshToken.deleteOne({ userId: user._id });
             // Clear cookies
-            res.clearCookie('accessToken');
-            res.clearCookie('refreshToken');
+            res.clearCookie('accessToken', {
+                httpOnly: true,
+                secure: true, // Uncomment this line if using HTTPS in production
+            });
+            res.clearCookie('refreshToken', {
+                httpOnly: true,
+                secure: true, // Uncomment this line if using HTTPS in production
+            });
             // Return success response
             res.status(200).json({ message: 'User deleted successfully' });
         } catch (error) {
