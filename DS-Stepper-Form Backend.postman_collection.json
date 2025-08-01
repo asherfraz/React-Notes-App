@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "9d95ba63-5e58-4054-a4a0-535f900a3bd2",
+		"name": "DS-Stepper-Form Backend",
+		"description": "This Collection is the REST Api's for backend for the stepper form React App:  \nlink: [https://github.com/asherfraz/DS-Internship/tree/main/stepper-form](https://github.com/asherfraz/DS-Internship/tree/main/stepper-form)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "43907188",
+		"_collection_link": "https://asherfraz.postman.co/workspace/Asher-Fraz's-Workspace~45cb38b1-bda6-4ea0-80a6-4a6fbc71ebd0/collection/43907188-9d95ba63-5e58-4054-a4a0-535f900a3bd2?source=collection_link"
+	},
+	"item": [
+		{
+			"name": "/api/user",
+			"item": [
+				{
+					"name": "/api/user/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\":\"Asher Fraz\",\n    \"lname\":\"Anjum\",\n    \"email\":\"asherfraz@gmail.com\",\n    \"streetAddress\":\"House, Street, and Town\",\n    \"city\":\"Rawalpindi\",\n    \"country\":\"Pakistan, PK\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/user/register"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/refresh",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/user/refresh"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/update/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\":\"Asher Fraz\",\n    \"lname\":\"Anjum\",\n    \"email\":\"asherfraz@gmail.com\",\n    \"password\":\"Password@1234445555555\",\n    \"streetAddress\":\"House, Street, and Town\",\n    \"city\":\"Rawalpindi\",\n    \"country\":\"Pakistan, PK\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/user/update/688389f9ef75f4377f803628"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"asherfraz@gmail.com\",\n    \"password\":\"Password@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{base_url}}/api/user/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/delete/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{base_url}}/api/user/delete/68837f08bf815ed7312d7983"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/user/68837fb62468de474d708c27"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/api/note",
+			"item": [
+				{
+					"name": "create note",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Welcome Note\",\r\n    \"content\": \"This is the Note Content\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{note_url}}/"
+					},
+					"response": []
+				},
+				{
+					"name": "update note",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"title\":\"Welcome Note\",\r\n    \"content\": \"This is the NEw New NEW Note Content ! >>>>>>.....\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{note_url}}/6887306800263cd5df99aac0"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{note_url}}/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Note By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{note_url}}/6887306800263cd5df99aac0"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Note",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{note_url}}/6887306800263cd5df99aac0"
+					},
+					"response": []
+				}
+			],
+			"description": "All Api's realted to Notes Managment"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "note_url",
+			"value": "http://localhost:3000/api/note",
+			"type": "string"
+		}
+	]
+}
