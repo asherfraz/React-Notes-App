@@ -7,6 +7,7 @@ const JWTService = require('../services/JWT.service');
 const hasBlankPassword = require('../middlewares/hasBlankPassword');
 const { sendLoginNotificationEmail, sendWelcomeEmail, sendPasswordResetEmail, sendPasswordChangedNotificationEmail } = require('./email.controller');
 const { FRONTEND_URL } = require('../config/dotenvx');
+const NoteService = require('../services/note.service');
 
 const UserController = {
     async createUserUsingEmail(req, res) {
@@ -52,6 +53,10 @@ const UserController = {
 
                 // Save the new user to the database
                 await newUser.save();
+
+                // Create a welcome note for the user
+                NoteService.WelcomeNote(req, res);
+
                 // Store the refresh token in the database
                 await JWTService.storeRefreshToken(newUser._id, refreshToken);
 
@@ -174,6 +179,10 @@ const UserController = {
                 refreshToken = JWTService.signRefreshToken({ userId: newUser._id });
                 // Save user to database
                 await newUser.save();
+
+                // Create a welcome note for the user
+                NoteService.WelcomeNote(req, res);
+
                 // Store the refresh token in the database
                 await JWTService.storeRefreshToken(newUser._id, refreshToken);
             }
