@@ -64,15 +64,15 @@ const UserController = {
             // Set cookies for access and refresh tokens
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
-                priority: 'high', // High priority for refresh token
-                sameSite: 'None', // Allow cross-site requests
+
+                // sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-                priority: 'high', // High priority for refresh token
-                sameSite: 'None', // Allow cross-site requests
+
+                // sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
@@ -129,15 +129,15 @@ const UserController = {
                 // Set cookies for access and refresh tokens
                 res.cookie('accessToken', accessToken, {
                     httpOnly: true,
-                    priority: 'high', // High priority for refresh token
-                    sameSite: 'None', // Allow cross-site requests
+
+                    // sameSite: 'None', // Allow cross-site requests
                     secure: true, // Uncomment this line if using HTTPS in production
                     maxAge: 3600 * 1000 // 1 hour
                 });
                 res.cookie('refreshToken', refreshToken, {
                     httpOnly: true,
-                    priority: 'high', // High priority for refresh token
-                    sameSite: 'None', // Allow cross-site requests
+
+                    // sameSite: 'None', // Allow cross-site requests
                     secure: true, // Uncomment this line if using HTTPS in production
                     maxAge: 3600 * 1000 * 24 * 7 // 7 days
                 });
@@ -188,15 +188,15 @@ const UserController = {
             // Set cookies for access and refresh tokens
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
-                priority: 'high', // High priority for refresh token
-                sameSite: 'None', // Allow cross-site requests
+
+                // sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-                priority: 'high', // High priority for refresh token
-                sameSite: 'None', // Allow cross-site requests
+
+                // sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
@@ -268,15 +268,15 @@ const UserController = {
             // Set cookies for access and refresh tokens
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
-                priority: 'high', // High priority for refresh token
-                sameSite: 'None', // Allow cross-site requests
+
+                // sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-                priority: 'high', // High priority for refresh token
-                sameSite: 'None', // Allow cross-site requests
+
+                // sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
@@ -359,15 +359,15 @@ const UserController = {
             // Set cookies for new tokens
             res.cookie('accessToken', newAccessToken, {
                 httpOnly: true,
-                priority: 'high', // High priority for refresh token
-                sameSite: 'None', // Allow cross-site requests
+
+                // sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', newRefreshToken, {
                 httpOnly: true,
-                priority: 'high', // High priority for refresh token
-                sameSite: 'None', // Allow cross-site requests
+
+                // sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
