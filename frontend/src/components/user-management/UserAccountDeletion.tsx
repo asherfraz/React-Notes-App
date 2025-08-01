@@ -21,12 +21,14 @@ import { deleteUserAccount } from "@/api/userApis";
 import { logoutUser } from "@/redux/userSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 export const UserAccountDeletion = () => {
 	const user = useAuth();
 	const [open, setOpen] = useState(false);
 	const [email, setEmail] = useState("");
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const openModal = () => {
 		setOpen(true);
@@ -38,6 +40,7 @@ export const UserAccountDeletion = () => {
 			if (response.status === 200) {
 				dispatch(logoutUser());
 				toast.success("User account deleted successfully.");
+				navigate("/");
 			} else {
 				toast.error(response.response.data.message);
 			}
