@@ -34,7 +34,13 @@ export const UserAccountDeletion = () => {
 		setOpen(true);
 	};
 
-	const handleAccountDeletion = async () => {
+	const handleAccountDeletion = async (e) => {
+		e.preventDefault();
+		if (!user || !user._id) {
+			toast.error("You are not logged in.");
+			navigate("/login");
+			return;
+		}
 		if (email !== user.email) {
 			toast.error("Email does not match your account.");
 			return;
@@ -94,7 +100,7 @@ export const UserAccountDeletion = () => {
 					<DialogHeader>
 						<DialogTitle>Delete User Account</DialogTitle>
 					</DialogHeader>
-					<div className="space-y-4">
+					<form className="space-y-4" onSubmit={handleAccountDeletion}>
 						<div>
 							<Label htmlFor="country" className="mb-2">
 								Type your email:{" "}
@@ -111,24 +117,20 @@ export const UserAccountDeletion = () => {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</div>
-					</div>
+						<DialogFooter>
+							<Button
+								variant="outline"
+								type="reset"
+								onClick={() => setOpen(false)}
+							>
+								Cancel
+							</Button>
+							<Button type="submit" className="bg-red-400 hover:bg-red-500">
+								Delete!
+							</Button>
+						</DialogFooter>
+					</form>
 				</DialogContent>
-				<DialogFooter>
-					<Button
-						variant="outline"
-						type="button"
-						onClick={() => setOpen(false)}
-					>
-						Cancel
-					</Button>
-					<Button
-						type="submit"
-						onClick={() => handleAccountDeletion()}
-						className="bg-red-400 hover:bg-red-500"
-					>
-						Delete!
-					</Button>
-				</DialogFooter>
 			</Dialog>
 		</>
 	);
