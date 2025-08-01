@@ -34,7 +34,8 @@ export const UserAccountDeletion = () => {
 		setOpen(true);
 	};
 
-	const handleAccountDeletion = async () => {
+	const handleAccountDeletion = async (e) => {
+		e.preventDefault();
 		try {
 			const response = await deleteUserAccount(user._id);
 			console.log(">>>: DeleteUser API Response:", response);
@@ -107,24 +108,24 @@ export const UserAccountDeletion = () => {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</div>
-						<DialogFooter>
-							<Button
-								variant="outline"
-								type="button"
-								onClick={() => setOpen(false)}
-							>
-								Cancel
-							</Button>
-							<Button
-								type="submit"
-								onClick={handleAccountDeletion}
-								className="bg-red-400 hover:bg-red-500"
-							>
-								Delete!
-							</Button>
-						</DialogFooter>
 					</form>
 				</DialogContent>
+				<DialogFooter>
+					<Button
+						variant="outline"
+						type="button"
+						onClick={() => setOpen(false)}
+					>
+						Cancel
+					</Button>
+					<Button
+						type="submit"
+						onClick={(e) => handleAccountDeletion(e)}
+						className="bg-red-400 hover:bg-red-500"
+					>
+						Delete!
+					</Button>
+				</DialogFooter>
 			</Dialog>
 		</>
 	);
