@@ -1,0 +1,14 @@
+{
+    "redirects": [
+        {
+            "source": "/old-route",
+            "destination": "/new-route",
+            "permanent": true
+        },
+        {
+            "source": "/docs",
+            "destination": "https://external-site.com/docs",
+            "permanent": false
+        }
+    ]
+}

@@ -6,7 +6,6 @@ const notesRoutes = require('./routes/notes.route');
 const { PORT, FRONTEND_URL } = require('./config/dotenvx');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const { Console } = require('console');
 
 
 // 3rd party middleware
@@ -18,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOptions = {
-    origin: ["http://localhost:5173", FRONTEND_URL, FRONTEND_URL.slice(0, -1)],
+    origin: [FRONTEND_URL, FRONTEND_URL.slice(0, -1), "http://localhost:5173"],
     optionsSuccessStatus: 200,
     credentials: true,
 };
