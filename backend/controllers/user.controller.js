@@ -64,14 +64,16 @@ const UserController = {
             // Set cookies for access and refresh tokens
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
-                sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                secure: true, // Use secure cookies in production
+                priority: 'high', // High priority for refresh token
+                sameSite: 'None', // Allow cross-site requests
+                secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-                sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                secure: true, // Use secure cookies in production
+                priority: 'high', // High priority for refresh token
+                sameSite: 'None', // Allow cross-site requests
+                secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
 
@@ -127,14 +129,16 @@ const UserController = {
                 // Set cookies for access and refresh tokens
                 res.cookie('accessToken', accessToken, {
                     httpOnly: true,
-                    sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                    secure: true, // Use secure cookies in production
+                    priority: 'high', // High priority for refresh token
+                    sameSite: 'None', // Allow cross-site requests
+                    secure: true, // Uncomment this line if using HTTPS in production
                     maxAge: 3600 * 1000 // 1 hour
                 });
                 res.cookie('refreshToken', refreshToken, {
                     httpOnly: true,
-                    sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                    secure: true, // Use secure cookies in production
+                    priority: 'high', // High priority for refresh token
+                    sameSite: 'None', // Allow cross-site requests
+                    secure: true, // Uncomment this line if using HTTPS in production
                     maxAge: 3600 * 1000 * 24 * 7 // 7 days
                 });
 
@@ -184,14 +188,16 @@ const UserController = {
             // Set cookies for access and refresh tokens
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
-                sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                secure: true, // Use secure cookies in production
+                priority: 'high', // High priority for refresh token
+                sameSite: 'None', // Allow cross-site requests
+                secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-                sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                secure: true, // Use secure cookies in production
+                priority: 'high', // High priority for refresh token
+                sameSite: 'None', // Allow cross-site requests
+                secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
 
@@ -262,14 +268,16 @@ const UserController = {
             // Set cookies for access and refresh tokens
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
-                sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                secure: true, // Use secure cookies in production
+                priority: 'high', // High priority for refresh token
+                sameSite: 'None', // Allow cross-site requests
+                secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-                sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                secure: true, // Use secure cookies in production
+                priority: 'high', // High priority for refresh token
+                sameSite: 'None', // Allow cross-site requests
+                secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
 
@@ -351,14 +359,16 @@ const UserController = {
             // Set cookies for new tokens
             res.cookie('accessToken', newAccessToken, {
                 httpOnly: true,
-                sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                secure: true, // Use secure cookies in production
+                priority: 'high', // High priority for refresh token
+                sameSite: 'None', // Allow cross-site requests
+                secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', newRefreshToken, {
                 httpOnly: true,
-                sameSite: 'Strict', // Use 'Strict' to prevent CSRF attacks
-                secure: true, // Use secure cookies in production
+                priority: 'high', // High priority for refresh token
+                sameSite: 'None', // Allow cross-site requests
+                secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
 
