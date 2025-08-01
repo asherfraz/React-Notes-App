@@ -64,15 +64,13 @@ const UserController = {
             // Set cookies for access and refresh tokens
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
-
-                // sameSite: 'None', // Allow cross-site requests
+                sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
-
-                // sameSite: 'None', // Allow cross-site requests
+                sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
@@ -130,14 +128,14 @@ const UserController = {
                 res.cookie('accessToken', accessToken, {
                     httpOnly: true,
 
-                    // sameSite: 'None', // Allow cross-site requests
+                    sameSite: 'None', // Allow cross-site requests
                     secure: true, // Uncomment this line if using HTTPS in production
                     maxAge: 3600 * 1000 // 1 hour
                 });
                 res.cookie('refreshToken', refreshToken, {
                     httpOnly: true,
 
-                    // sameSite: 'None', // Allow cross-site requests
+                    sameSite: 'None', // Allow cross-site requests
                     secure: true, // Uncomment this line if using HTTPS in production
                     maxAge: 3600 * 1000 * 24 * 7 // 7 days
                 });
@@ -189,14 +187,14 @@ const UserController = {
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
 
-                // sameSite: 'None', // Allow cross-site requests
+                sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
 
-                // sameSite: 'None', // Allow cross-site requests
+                sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
@@ -269,14 +267,14 @@ const UserController = {
             res.cookie('accessToken', accessToken, {
                 httpOnly: true,
 
-                // sameSite: 'None', // Allow cross-site requests
+                sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
 
-                // sameSite: 'None', // Allow cross-site requests
+                sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
@@ -360,14 +358,14 @@ const UserController = {
             res.cookie('accessToken', newAccessToken, {
                 httpOnly: true,
 
-                // sameSite: 'None', // Allow cross-site requests
+                sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 // 1 hour
             });
             res.cookie('refreshToken', newRefreshToken, {
                 httpOnly: true,
 
-                // sameSite: 'None', // Allow cross-site requests
+                sameSite: 'None', // Allow cross-site requests
                 secure: true, // Uncomment this line if using HTTPS in production
                 maxAge: 3600 * 1000 * 24 * 7 // 7 days
             });
@@ -587,14 +585,8 @@ const UserController = {
             // delete its refresh token
             await RefreshToken.deleteOne({ userId: user._id });
             // Clear cookies
-            res.clearCookie('accessToken', {
-                httpOnly: true,
-                secure: true, // Uncomment this line if using HTTPS in production
-            });
-            res.clearCookie('refreshToken', {
-                httpOnly: true,
-                secure: true, // Uncomment this line if using HTTPS in production
-            });
+            res.clearCookie('accessToken');
+            res.clearCookie('refreshToken');
             // Return success response
             res.status(200).json({ message: 'User deleted successfully' });
         } catch (error) {
