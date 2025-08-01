@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOptions = {
-    origin: [FRONTEND_URL, FRONTEND_URL.slice(0, -1), "http://localhost:5173"],
+    origin: ["https://ash-notes-app.vercel.app", FRONTEND_URL.slice(0, -1), "http://localhost:5173"],
     optionsSuccessStatus: 200,
     credentials: true,
 };
