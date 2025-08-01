@@ -13,15 +13,7 @@ import { UserOverview } from "./components/user-management/UserOverview";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import SetNewPasswordPage from "./pages/SetNewPasswordPage";
 import { UserAccountDeletion } from "./components/user-management/UserAccountDeletion";
-import { useAuth } from "./hook/useAuth";
-
-const userLoggedIn = () => {
-	const user = useAuth();
-	if (!user || !user._id) {
-		return false;
-	}
-	return true;
-};
+import ProtectRouteIfLoggedIn from "./ProtectRouteIfLoggedIn";
 
 const router = createBrowserRouter([
 	{
@@ -34,11 +26,19 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/register",
-		element: !userLoggedIn ? <RegisterPage /> : <Navigate to="/" />,
+		element: (
+			<ProtectRouteIfLoggedIn>
+				<RegisterPage />
+			</ProtectRouteIfLoggedIn>
+		),
 	},
 	{
 		path: "/login",
-		element: !userLoggedIn ? <LoginPage /> : <Navigate to="/" />,
+		element: (
+			<ProtectRouteIfLoggedIn>
+				<LoginPage />
+			</ProtectRouteIfLoggedIn>
+		),
 	},
 	{
 		path: "/reset-password",
