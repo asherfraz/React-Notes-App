@@ -35,7 +35,7 @@ export const LoginCard = () => {
 			} else {
 				// toast.error("Login failed. Please check your credentials.");
 				toast.error(response.response.data.message);
-				console.error("Login failed:", response);
+				console.error("Login failed:", response.response);
 			}
 		} catch (error) {
 			toast.error("Login failed. Please try again.");
