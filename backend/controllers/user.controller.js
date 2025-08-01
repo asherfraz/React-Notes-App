@@ -55,7 +55,7 @@ const UserController = {
                 await newUser.save();
 
                 // Create a welcome note for the user
-                NoteService.WelcomeNote(req, res);
+                NoteService.WelcomeNote(newUser);
 
                 // Store the refresh token in the database
                 await JWTService.storeRefreshToken(newUser._id, refreshToken);
@@ -181,7 +181,7 @@ const UserController = {
                 await newUser.save();
 
                 // Create a welcome note for the user
-                NoteService.WelcomeNote(req, res);
+                NoteService.WelcomeNote(newUser);
 
                 // Store the refresh token in the database
                 await JWTService.storeRefreshToken(newUser._id, refreshToken);
