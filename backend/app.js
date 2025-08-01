@@ -30,7 +30,7 @@ app.use('/api/note', notesRoutes);
 
 
 // Api health check its live or not
-app.get('/api' || '/', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).json({
         message: "Welcome to Ash Notes App backend APIs Server!",
         frontend: FRONTEND_URL,
