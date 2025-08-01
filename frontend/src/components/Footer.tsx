@@ -2,18 +2,20 @@ import { Link } from "react-router";
 
 const Footer = () => {
 	return (
-		<footer className="w-full bg-primary text-white py-4 text-center">
-			<p className="text-sm">
-				&copy; {new Date().getFullYear()} Notes App — Built by{" "}
-				<Link
-					to="https://asherfraz.com/"
-					className="text-white underline font-semibold hover:text-gray-200"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					@asherfraz
-				</Link>
-			</p>
+		<footer className="text-white bg-primary body-font">
+			<div className="container px-5 py-6 mx-auto text-center">
+				<p className="text-sm text-white/90">
+					© {new Date().getFullYear()} Notes App — Built by{" "}
+					<Link
+						to="https://asherfraz.com/"
+						className="text-white underline hover:text-white/80"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						@asherfraz
+					</Link>
+				</p>
+			</div>
 		</footer>
 	);
 };

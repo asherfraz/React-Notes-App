@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import HomePage from "./pages/HomePage";
 import AddNotePage from "./pages/AddNotePage";
 import ViewNotePage from "./pages/ViewNotePage";
@@ -13,6 +13,15 @@ import { UserOverview } from "./components/user-management/UserOverview";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import SetNewPasswordPage from "./pages/SetNewPasswordPage";
 import { UserAccountDeletion } from "./components/user-management/UserAccountDeletion";
+import { useAuth } from "./hook/useAuth";
+
+const userLoggedIn = () => {
+	const user = useAuth();
+	if (!user || !user._id) {
+		return false;
+	}
+	return true;
+};
 
 const router = createBrowserRouter([
 	{
@@ -25,11 +34,11 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/register",
-		element: <RegisterPage />,
+		element: !userLoggedIn ? <RegisterPage /> : <Navigate to="/" />,
 	},
 	{
 		path: "/login",
-		element: <LoginPage />,
+		element: !userLoggedIn ? <LoginPage /> : <Navigate to="/" />,
 	},
 	{
 		path: "/reset-password",

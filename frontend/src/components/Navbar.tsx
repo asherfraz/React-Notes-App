@@ -1,11 +1,12 @@
 import { useAuth } from "@/hook/useAuth";
-import { Github, LogIn, LogOut, X, Menu } from "lucide-react";
+import { Github, LogIn, LogOut, Menu, Notebook, X } from "lucide-react";
 import { Link, useNavigate, NavLink } from "react-router";
 import { logout } from "../api/userApis";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userSlice";
 import { useState } from "react";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
 	const user = useAuth();
@@ -21,15 +22,12 @@ const Navbar = () => {
 			}
 
 			const response = await logout(user._id);
-			console.log("Logout response:", response);
 			if (response.auth === false) {
-				// dispatch removeUser from redux store
 				dispatch(logoutUser());
 				toast.success("Logout successful!");
 				navigate("/login");
 			} else {
-				toast.error(response.message || "Logout failed. Please try again.");
-				console.error("Logout failed:", response);
+				toast.error(response.message || "Logout failed.");
 			}
 		} catch (error) {
 			console.error("Logout error:", error);
@@ -37,23 +35,24 @@ const Navbar = () => {
 		}
 	};
 
-	const toggleMenu = () => {
-		setMenuOpen(!menuOpen);
-	};
-
 	const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-		isActive ? "text-white font-semibold" : "text-gray-300 hover:text-white";
+		isActive
+			? "ml-5 text-white font-semibold"
+			: "ml-5 text-white/70 hover:text-white";
 
 	return (
-		<header className=" bg-blue-600 text-white shadow-md">
-			<div className="container mx-auto px-4 py-3 flex justify-between items-center">
-				{/* Logo */}
-				<Link to="/" className="text-2xl font-bold">
-					Notes App
+		<header className="text-gray-400 bg-blue-600 body-font">
+			<div className="container mx-auto flex flex-wrap p-5 flex-row justify-center items-center">
+				<Link
+					to="/"
+					className="flex title-font font-medium items-center text-white mb-0"
+				>
+					<Notebook className="w-10 h-10 text-white" />
+					<span className="ml-3 text-xl">Notes App</span>
 				</Link>
 
 				{/* Desktop Nav */}
-				<nav className="hidden md:flex items-center gap-6">
+				<nav className="hidden md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 md:flex flex-wrap items-center text-base justify-center">
 					<NavLink to="/" className={navLinkClass}>
 						Home
 					</NavLink>
@@ -65,95 +64,119 @@ const Navbar = () => {
 							Profile
 						</NavLink>
 					)}
+					{!user && (
+						<NavLink
+							to="/register"
+							className={navLinkClass}
+							onClick={() => setMenuOpen(false)}
+						>
+							Register
+						</NavLink>
+					)}
 				</nav>
 
-				{/* Auth Buttons */}
+				{/* Auth Buttons + GitHub */}
 				<div className="hidden md:flex items-center gap-4">
 					{user ? (
-						<button
+						<Button
 							onClick={handleLogout}
 							className="flex items-center gap-2 border-2 border-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
 						>
-							<span className="text-sm font-semibold">
-								{user.fname}, Logout
-							</span>
-							<LogOut size={18} />
-						</button>
+							{user.fname}, Logout <LogOut className="ml-2" size={18} />
+						</Button>
 					) : (
-						<button
+						<Button
 							onClick={() => navigate("/login")}
 							className="flex items-center gap-2 border-2 border-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
 						>
-							<span className="text-sm font-semibold">Login</span>
-							<LogIn size={18} />
-						</button>
+							Login <LogIn className="ml-2" size={18} />
+						</Button>
 					)}
 					<Link
 						to="https://github.com/asherfraz/"
 						target="_blank"
-						className="flex items-center gap-2 border-2 border-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
+						className="flex items-center gap-2 border-2 border-white text-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
 					>
-						<h2 className="text-sm font-bold">Checkout my Github</h2>
-						<Github className="size-5 hover:text-gray-800" />
+						<h2 className="text-sm font-bold">GitHub</h2>
+						<Github className="ml-2 size-5" />
 					</Link>
 				</div>
 
 				{/* Mobile Menu Toggle */}
-				<button
-					onClick={toggleMenu}
-					className="md:hidden text-white focus:outline-none"
+				<Button
+					aria-label="Toggle Menu"
+					onClick={() => setMenuOpen(!menuOpen)}
+					className="md:hidden ml-auto text-white
+					flex items-center justify-center bg-gray-700 rounded-md hover:bg-gray-600 transition-colors"
 				>
-					{menuOpen ? <X size={28} /> : <Menu size={28} />}
-				</button>
+					{menuOpen ? <X className="w-16 " /> : <Menu className="w-16" />}
+				</Button>
 			</div>
 
 			{/* Mobile Nav */}
 			{menuOpen && (
-				<div className="md:hidden bg-blue-500 px-4 pb-4">
-					<nav className="flex flex-col gap-4">
-						<NavLink to="/" className={navLinkClass} onClick={toggleMenu}>
+				<div className="md:hidden bg-primary px-5 pb-4">
+					<nav className="flex flex-col gap-3 border-t-2 border-white pt-4">
+						<NavLink
+							to="/"
+							className={navLinkClass}
+							onClick={() => setMenuOpen(false)}
+						>
 							Home
 						</NavLink>
 						<NavLink
 							to="/add-note"
 							className={navLinkClass}
-							onClick={toggleMenu}
+							onClick={() => setMenuOpen(false)}
 						>
 							Add Note
 						</NavLink>
+						{user && (
+							<NavLink
+								to="/profile"
+								className={navLinkClass}
+								onClick={() => setMenuOpen(false)}
+							>
+								Profile
+							</NavLink>
+						)}
+						{!user && (
+							<NavLink
+								to="/register"
+								className={navLinkClass}
+								onClick={() => setMenuOpen(false)}
+							>
+								Register
+							</NavLink>
+						)}
 						<Link
 							to="https://github.com/asherfraz/"
 							target="_blank"
-							className="text-white text-2xl font-bold flex justify-center items-center gap-2 border-2 rounded-lg p-2 hover:bg-white hover:text-primary transition-colors"
+							className="flex items-center gap-2 border-2 border-white text-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
 						>
-							<h2 className="text-sm font-bold">Checkout my Github</h2>
-							<Github className="size-5 hover:text-gray-800" />
+							<h2>Checkout my GitHub</h2>
+							<Github className="size-5" />
 						</Link>
-
 						{user ? (
-							<button
+							<Button
 								onClick={() => {
 									handleLogout();
-									toggleMenu();
+									setMenuOpen(false);
 								}}
-								className="flex items-center gap-2 border-2 border-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
+								className="flex items-center gap-2 border-2 border-white text-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
 							>
-								<span className="text-sm font-semibold">
-									{user.fname}, Logout
-								</span>
-								<LogOut size={18} />
-							</button>
+								{user.fname}, Logout <LogOut className="ml-2" size={18} />
+							</Button>
 						) : (
-							<button
+							<Button
 								onClick={() => {
 									navigate("/login");
-									toggleMenu();
+									setMenuOpen(false);
 								}}
-								className="flex items-center gap-2 border-2 border-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
+								className="flex items-center gap-2 border-2 border-white text-white px-3 py-1 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
 							>
-								<span className="text-sm font-semibold">Login</span>
-								<LogIn size={18} />
-							</button>
+								Login <LogIn className="ml-2" size={18} />
+							</Button>
 						)}
 					</nav>
 				</div>
