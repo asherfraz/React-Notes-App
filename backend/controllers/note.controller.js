@@ -104,8 +104,21 @@ const noteController = {
         } catch (error) {
             res.status(500).json({ message: 'Internal Server Error', error });
         }
-    }
+    },
 
+    async deleteAllNotes(req, res) {
+        try {
+            const { userId } = req.params;
+            // Find and delete all notes for the user
+            const deletedNotes = await Note.deleteMany({ userId });
+            if (!deletedNotes) {
+                return res.status(404).json({ message: 'No notes found for this user.' });
+            }
+            res.status(200).json({ message: 'All notes deleted successfully!', notes: deletedNotes });
+        } catch (error) {
+            res.status(500).json({ message: 'Internal Server Error', error });
+        }
+    },
 };
 
 

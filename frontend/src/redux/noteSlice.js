@@ -34,6 +34,10 @@ const noteSlice = createSlice({
             localStorage.setItem("notes", JSON.stringify(state.notes));
 
         },
+        clearNotes: (state) => {
+            state.notes = [];
+            localStorage.setItem("notes", JSON.stringify(state.notes));
+        },
         updateNote: (state, action) => {
             const index = state.notes.findIndex(note => note._id === action.payload._id);
             if (index !== -1) {
@@ -56,5 +60,5 @@ const noteSlice = createSlice({
     }
 })
 
-export const { addNote, removeNote, updateNote } = noteSlice.actions
+export const { addNote, removeNote, clearNotes, updateNote } = noteSlice.actions
 export default noteSlice.reducer

@@ -14,6 +14,7 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import SetNewPasswordPage from "./pages/SetNewPasswordPage";
 import { UserAccountDeletion } from "./components/user-management/UserAccountDeletion";
 import ProtectRouteIfLoggedIn from "./ProtectRouteIfLoggedIn";
+import { UserNotes } from "./components/user-management/UserNotes";
 
 const router = createBrowserRouter([
 	{
@@ -85,6 +86,14 @@ const router = createBrowserRouter([
 				element: (
 					<ProtectedRoute>
 						<UserAddressInfo />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: "notes-management",
+				element: (
+					<ProtectedRoute>
+						<UserNotes />
 					</ProtectedRoute>
 				),
 			},

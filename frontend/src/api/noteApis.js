@@ -55,3 +55,12 @@ export const deleteNote = async (id) => {
         return error;
     }
 }
+
+export const deleteAllNotes = async (userId) => {
+    try {
+        const response = await api.delete(`/note/all/${userId}`);
+        return response;
+    } catch (error) {
+        return error;
+    }
+}

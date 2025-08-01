@@ -1,7 +1,16 @@
 import { useAuth } from "@/hook/useAuth";
 import Layout from "../Layout";
 import { Link, Outlet } from "react-router";
-import { Home, Locate, LocateIcon, Lock, User, UserMinus } from "lucide-react";
+import {
+	Home,
+	Locate,
+	LocateIcon,
+	Lock,
+	Notebook,
+	NotebookIcon,
+	User,
+	UserMinus,
+} from "lucide-react";
 
 const UserProfilePage = () => {
 	const userfname = useAuth().fname;
@@ -54,6 +63,15 @@ const UserProfilePage = () => {
 								>
 									<LocateIcon className="h-6 w-6 mr-3" />
 									Address Info
+								</Link>
+							</li>
+							<li>
+								<Link
+									to="/profile/notes-management"
+									className="flex items-center p-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+								>
+									<NotebookIcon className="h-6 w-6 mr-3" />
+									Notes Management
 								</Link>
 							</li>
 							<li>
