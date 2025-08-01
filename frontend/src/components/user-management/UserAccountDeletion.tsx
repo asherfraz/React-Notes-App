@@ -34,8 +34,11 @@ export const UserAccountDeletion = () => {
 		setOpen(true);
 	};
 
-	const handleAccountDeletion = async (e) => {
-		e.preventDefault();
+	const handleAccountDeletion = async () => {
+		if (email !== user.email) {
+			toast.error("Email does not match your account.");
+			return;
+		}
 		try {
 			const response = await deleteUserAccount(user._id);
 			console.log(">>>: DeleteUser API Response:", response);
@@ -91,7 +94,7 @@ export const UserAccountDeletion = () => {
 					<DialogHeader>
 						<DialogTitle>Delete User Account</DialogTitle>
 					</DialogHeader>
-					<form className="space-y-4">
+					<div className="space-y-4">
 						<div>
 							<Label htmlFor="country" className="mb-2">
 								Type your email:{" "}
@@ -108,7 +111,7 @@ export const UserAccountDeletion = () => {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</div>
-					</form>
+					</div>
 				</DialogContent>
 				<DialogFooter>
 					<Button
@@ -120,7 +123,7 @@ export const UserAccountDeletion = () => {
 					</Button>
 					<Button
 						type="submit"
-						onClick={(e) => handleAccountDeletion(e)}
+						onClick={() => handleAccountDeletion()}
 						className="bg-red-400 hover:bg-red-500"
 					>
 						Delete!
